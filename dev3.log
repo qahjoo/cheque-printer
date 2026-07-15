@@ -1,0 +1,397 @@
+
+> cheque-printer@1.0.0 dev
+> concurrently -k "npm:dev:vite" "npm:dev:electron"
+
+[dev:vite] 
+[dev:vite] > cheque-printer@1.0.0 dev:vite
+[dev:vite] > vite
+[dev:vite] 
+[dev:electron] 
+[dev:electron] > cheque-printer@1.0.0 dev:electron
+[dev:electron] > wait-on tcp:5173 && cross-env NODE_ENV=development VITE_DEV_SERVER_URL=http://localhost:5173 electron .
+[dev:electron] 
+[dev:vite] [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+[dev:vite] 
+[dev:vite]   [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m487[22m[2m[0m ms[22m
+[dev:vite] 
+[dev:vite]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[dev:vite] [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[dev:electron] 
+[dev:electron] ⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+[dev:electron] [db] applied migration: 001_init.sql
+[dev:electron] [reminder] scheduled at hours: 8, 11, 14, 17, 20
+[dev:electron] [41792:0714/155417.842:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[dev:electron] [41792:0714/155417.842:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] [supabase] drain failed: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] [supabase] drain failed: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] Error occurred in handler for 'sync:status': Error: Node.js detected but native WebSocket not found.
+[dev:electron] 
+[dev:electron] Suggested solution: Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.
+[dev:electron]     at WebSocketFactory.getWebSocketConstructor (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\lib\websocket-factory.js:86:15)
+[dev:electron]     at RealtimeClient._initializeOptions (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:630:164)
+[dev:electron]     at new RealtimeClient (E:\cheque-printer\node_modules\@supabase\realtime-js\dist\main\RealtimeClient.js:184:43)
+[dev:electron]     at SupabaseClient._initRealtimeClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1463:10)
+[dev:electron]     at new SupabaseClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1288:24)
+[dev:electron]     at createClient (E:\cheque-printer\node_modules\@supabase\supabase-js\dist\index.cjs:1496:9)
+[dev:electron]     at getClient (E:\cheque-printer\main\services\supabaseService.js:24:14)
+[dev:electron]     at Object.isOnline (E:\cheque-printer\main\services\supabaseService.js:32:13)
+[dev:electron]     at E:\cheque-printer\main\ipc\sync.js:20:37
+[dev:electron]     at WebContents.<anonymous> (node:electron/js2c/browser_init:2:86178)
+[dev:electron]     at WebContents.emit (node:events:518:28)
+[dev:electron] npm run dev:electron exited with code 4294967295
+--> Sending SIGTERM to other processes..
+[dev:vite] npm run dev:vite exited with code 1

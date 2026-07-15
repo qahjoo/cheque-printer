@@ -1,0 +1,31 @@
+
+> cheque-printer@1.0.0 dev
+> concurrently -k "npm:dev:vite" "npm:dev:electron"
+
+[dev:electron] 
+[dev:electron] > cheque-printer@1.0.0 dev:electron
+[dev:electron] > wait-on tcp:5173 && cross-env NODE_ENV=development VITE_DEV_SERVER_URL=http://localhost:5173 electron .
+[dev:electron] 
+[dev:vite] 
+[dev:vite] > cheque-printer@1.0.0 dev:vite
+[dev:vite] > vite
+[dev:vite] 
+[dev:vite] [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+[dev:vite] Re-optimizing dependencies because lockfile has changed
+[dev:vite] 
+[dev:vite]   [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m549[22m[2m[0m ms[22m
+[dev:vite] 
+[dev:vite]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[dev:vite] [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[dev:electron] 
+[dev:electron] ⚠️  Node.js 20 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 22 or later. For more information, visit: https://github.com/orgs/supabase/discussions/45715
+[dev:electron] [reminder] scheduled at hours: 8, 11, 14, 17, 20
+[dev:electron] [8936:0714/162930.295:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[dev:electron] [8936:0714/162930.295:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[dev:vite] [2m4:41:51 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/renderer/screens/CheckForm.jsx, /renderer/styles.css[22m
+[dev:vite] [2m4:42:07 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/renderer/styles.css[22m
+[dev:vite] [2m4:42:30 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/renderer/App.jsx, /renderer/styles.css[22m
+[dev:vite] [2m4:42:36 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[dev:electron] npm run dev:electron exited with code 0
+--> Sending SIGTERM to other processes..
+[dev:vite] npm run dev:vite exited with code 1

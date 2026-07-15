@@ -1,0 +1,116 @@
+/* ==========================================================================
+   styles.css — Tailwind entry + Cairo font + RTL base
+   ========================================================================== */
+/* Local Cairo font (no CDN — works offline). TTF (woff2 unavailable upstream). */
+@font-face {
+  font-family: 'Cairo';
+  font-weight: 400;
+  font-display: swap;
+  src: url('../build/fonts/Cairo-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cairo';
+  font-weight: 700;
+  font-display: swap;
+  src: url('../build/fonts/Cairo-Bold.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #0ea5e9;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Tahoma', sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  direction: rtl;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   Print: only #print-sheet, exact mm, no scaling, no app chrome.
+   @page size is injected dynamically per template (see PrintCheque.jsx).
+   ========================================================================== */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #print-sheet,
+  #print-sheet * {
+    visibility: visible !important;
+  }
+  #print-sheet {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #fff !important;
+    transform: none !important; /* no scaling */
+  }
+  /* hide the on-screen dashed guide + background image frame when printing */
+  #print-sheet .no-print {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-sky-500 text-white hover:bg-sky-600;
+  }
+  .btn-secondary {
+    @apply btn bg-slate-200 text-slate-800 hover:bg-slate-300;
+  }
+  .btn-danger {
+    @apply btn bg-rose-500 text-white hover:bg-rose-600;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-slate-600 hover:bg-slate-100;
+  }
+  .card {
+    @apply rounded-xl bg-white p-5 shadow-sm border border-slate-100;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-slate-700;
+  }
+  .field-error {
+    @apply mt-1 text-xs text-rose-600;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .th {
+    @apply px-3 py-2 text-right text-xs font-semibold text-slate-500;
+  }
+  .td {
+    @apply px-3 py-2 text-sm text-slate-700 border-t border-slate-100;
+  }
+}
