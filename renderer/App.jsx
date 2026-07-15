@@ -37,6 +37,14 @@ function UpdaterToast() {
         if (data.progressObj) {
           setProgress(data.progressObj.percent);
         }
+        
+        // Auto-hide after 5 seconds if it's a final state message
+        if (data.text.includes('أحدث نسخة') || data.text.includes('خطأ')) {
+          setTimeout(() => {
+            setMsg('');
+            setProgress(null);
+          }, 5000);
+        }
       });
     }
   }, []);
@@ -44,10 +52,15 @@ function UpdaterToast() {
   if (!msg) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 rounded-lg bg-sky-900/90 px-4 py-3 text-white shadow-xl backdrop-blur-md border border-sky-700">
-      <div className="flex items-center gap-2">
-        <span className="animate-spin text-sky-400">🔄</span>
-        <span className="text-sm font-medium">{msg}</span>
+    <div className="fixed bottom-4 left-4 z-50 flex flex-col gap-2 rounded-lg bg-sky-900/90 px-4 py-3 text-white shadow-xl backdrop-blur-md border border-sky-700">
+      <div className="flex items-center gap-2 justify-between">
+        <div className="flex items-center gap-2">
+          {progress !== null ? <span className="animate-spin text-sky-400">🔄</span> : <span className="text-sky-400">ℹ️</span>}
+          <span className="text-sm font-medium">{msg}</span>
+        </div>
+        <button onClick={() => setMsg('')} className="text-slate-400 hover:text-white transition-colors">
+          ✕
+        </button>
       </div>
       {progress !== null && (
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-700">
