@@ -98,9 +98,9 @@ export default function TemplateDesigner() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Canvas */}
-        <div>
+        <div className="flex-shrink-0 overflow-auto max-w-full pb-4">
           <p className="mb-2 text-sm text-slate-500">اسحب الحقول (المقاس {meta.width_mm}×{meta.height_mm} مم — الأصل من الزاوية العليا اليمنى)</p>
           <div
             ref={canvasRef}
@@ -132,7 +132,7 @@ export default function TemplateDesigner() {
         </div>
 
         {/* Controls */}
-        <div className="w-72 space-y-3">
+        <div className="w-72 flex-shrink-0 space-y-3">
           <div className="card space-y-3">
             <div><label className="label">اسم القالب</label><input className="input" value={meta.name} onChange={(e) => setMeta({ ...meta, name: e.target.value })} /></div>
             <div className="grid grid-cols-2 gap-2">

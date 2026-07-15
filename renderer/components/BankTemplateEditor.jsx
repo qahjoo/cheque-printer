@@ -29,7 +29,7 @@ const FIELD_DEFS = {
 
 const round1 = (n) => Math.round(n * 10) / 10;
 
-export default function BankTemplateEditor({ onSaved }) {
+export default function BankTemplateEditor({ onSaved, liveWidth, liveHeight }) {
   const toast = useToast();
   const [bank, setBank] = useState(null);
   const [dims, setDims] = useState({ w: 165, h: 82 });
@@ -59,6 +59,12 @@ export default function BankTemplateEditor({ onSaved }) {
   }, []);
 
   useEffect(() => { loadBank(); }, [loadBank]);
+
+  useEffect(() => {
+    if (liveWidth && liveHeight) {
+      setDims({ w: Number(liveWidth), h: Number(liveHeight) });
+    }
+  }, [liveWidth, liveHeight]);
 
   const onMouseDown = (key) => (e) => {
     e.preventDefault();
@@ -119,9 +125,9 @@ export default function BankTemplateEditor({ onSaved }) {
   const sel = fields[selected];
 
   return (
-    <div className="flex flex-wrap gap-6">
+    <div className="flex flex-col lg:flex-row gap-6 items-start">
       {/* Canvas — to scale, RTL origin (right edge = 0) */}
-      <div>
+      <div className="flex-shrink-0 overflow-auto max-w-full pb-4">
         <p className="mb-2 text-sm text-slate-500">
           اسحب الحقول لضبط مواقعها (المقاس الفعلي {dims.w}×{dims.h} مم — الأصل من الزاوية العليا اليمنى)
         </p>
@@ -159,7 +165,7 @@ export default function BankTemplateEditor({ onSaved }) {
       </div>
 
       {/* Controls */}
-      <div className="w-72 space-y-4">
+      <div className="w-72 flex-shrink-0 space-y-4">
         <div>
           <label className="label">الحقل</label>
           <select className="input" value={selected} onChange={(e) => setSelected(e.target.value)}>

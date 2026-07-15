@@ -454,7 +454,7 @@ function PrintSettingsTab() {
       {/* ---- Field positions ---- */}
       <div className="card">
         <h2 className="mb-4 font-semibold">🎯 مواضع الحقول على الشيك</h2>
-        <BankTemplateEditor key={editorKey} />
+        <BankTemplateEditor key={editorKey} liveWidth={form.check_width_mm} liveHeight={form.check_height_mm} />
       </div>
     </div>
   );
