@@ -38,6 +38,14 @@ function fmtAmount(n) {
   return Number(n).toLocaleString('en-US', { maximumFractionDigits: 3 });
 }
 
+function splitAmount(amount) {
+  const v = Math.abs(Number(amount) || 0);
+  const dinars = Math.floor(v);
+  const fils = Math.round((v - dinars) * 1000);
+  const filsStr = fils > 0 ? String(fils).padStart(3, '0') : '';
+  return { dinars, filsStr };
+}
+
 // Absolute positioning from the top-right corner (right/top in mm).
 function fieldStyle(f) {
   return (
@@ -49,7 +57,57 @@ function fieldStyle(f) {
   );
 }
 
-function buildCheckHtml(check) {
+function fieldStyleModule2(f) {
+  return (
+    `position:absolute;top:${f.y_mm}mm;right:${f.x_mm}mm;` +
+    `font-size:${f.font_size}pt;` +
+    `font-weight:${f.font_weight || '400'};` +
+    `color:${f.color || '#000'};` +
+    `direction:${f.direction || 'rtl'};` +
+    `text-align:${f.align || 'right'};` +
+    `font-family:'${f.font_family || 'Cairo'}','Tahoma',sans-serif;`
+  );
+}
+
+function buildCheckHtml(check, offsets = { x: 0, y: 0 }) {
+  if (check.template && check.template.fields) {
+    const t = check.template;
+    const width = t.width_mm || CHECK_W_MM;
+    const height = t.height_mm || CHECK_H_MM;
+    const { dinars, filsStr } = splitAmount(check.amount);
+    
+    const values = {
+      payee: check.payee_ar || '',
+      amount_words: check.amount_words_ar || '',
+      amount_number: fmtAmount(dinars) || '',
+      amount_fils: filsStr || '',
+      date: check.due_date || '',
+      purpose: check.notes || '',
+      cheque_number: check.check_number || '',
+      crossed: check.is_crossed ? '// &Co' : '',
+    };
+    
+    const parts = [];
+    for (const f of t.fields) {
+      if (f.visible && values[f.field_name] != null && values[f.field_name] !== '') {
+        parts.push(`<div class="check-field" style="${fieldStyleModule2(f)}">${escapeHtml(values[f.field_name])}</div>`);
+      }
+    }
+    
+    return `<!doctype html><html dir="rtl"><head><meta charset="utf-8">
+      <style>
+        @page { size: ${width}mm ${height}mm; margin: 0; }
+        html { margin: 0; padding: 0; }
+        body { 
+          margin: 0; padding: 0; 
+          width: ${width}mm; height: ${height}mm; 
+          overflow: hidden; position: relative; 
+          left: ${offsets.x}mm; top: ${offsets.y}mm;
+        }
+        .check-field { position: absolute; white-space: nowrap; }
+      </style></head>
+      <body>${parts.join('')}</body></html>`;
+  }
   const t = parseTemplate(check.print_template);
   const width = check.check_width_mm || CHECK_W_MM;
   const height = check.check_height_mm || CHECK_H_MM;
@@ -73,7 +131,12 @@ function buildCheckHtml(check) {
     <style>
       @page { size: ${width}mm ${height}mm; margin: 0; }
       html { margin: 0; padding: 0; }
-      body { margin: 0; padding: 0; width: ${width}mm; height: ${height}mm; overflow: hidden; position: relative; }
+      body { 
+        margin: 0; padding: 0; 
+        width: ${width}mm; height: ${height}mm; 
+        overflow: hidden; position: relative; 
+        left: ${offsets.x}mm; top: ${offsets.y}mm;
+      }
       .check-field { position: absolute; white-space: nowrap; }
     </style></head>
     <body>${parts.join('')}</body></html>`;
@@ -112,7 +175,7 @@ function printHtml(html, printOpts) {
 }
 
 async function printCheck(check, opts = {}) {
-  const html = buildCheckHtml(check);
+  const html = buildCheckHtml(check, { x: opts.offsetX || 0, y: opts.offsetY || 0 });
   const width = check.check_width_mm || CHECK_W_MM;
   const height = check.check_height_mm || CHECK_H_MM;
   return printHtml(html, {

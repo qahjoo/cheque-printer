@@ -36,6 +36,7 @@ export default function BankTemplateEditor({ onSaved }) {
   const [fields, setFields] = useState(FIELD_DEFS);
   const [selected, setSelected] = useState('payee_ar');
   const [dragging, setDragging] = useState(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const canvasRef = useRef(null);
 
   const loadBank = useCallback(async () => {
@@ -63,6 +64,8 @@ export default function BankTemplateEditor({ onSaved }) {
     e.preventDefault();
     setSelected(key);
     setDragging(key);
+    const rect = e.currentTarget.getBoundingClientRect();
+    setDragOffset({ x: rect.right - e.clientX, y: e.clientY - rect.top });
   };
 
   const onMouseMove = useCallback(
@@ -70,13 +73,13 @@ export default function BankTemplateEditor({ onSaved }) {
       if (!dragging || !canvasRef.current) return;
       const rect = canvasRef.current.getBoundingClientRect();
       // RTL origin: right measured from the RIGHT edge, top from the top edge.
-      const rightPx = rect.right - e.clientX;
-      const topPx = e.clientY - rect.top;
+      const rightPx = rect.right - e.clientX - dragOffset.x;
+      const topPx = e.clientY - rect.top - dragOffset.y;
       const right_mm = round1(Math.max(0, Math.min(dims.w, rightPx / MM_TO_PX)));
       const top_mm = round1(Math.max(0, Math.min(dims.h, topPx / MM_TO_PX)));
       setFields((f) => ({ ...f, [dragging]: { ...f[dragging], right_mm, top_mm } }));
     },
-    [dragging, dims]
+    [dragging, dims, dragOffset]
   );
 
   const onMouseUp = useCallback(() => setDragging(null), []);
@@ -138,7 +141,7 @@ export default function BankTemplateEditor({ onSaved }) {
                 style={{
                   top: f.top_mm * MM_TO_PX,
                   right: f.right_mm * MM_TO_PX,
-                  fontSize: f.font_size,
+                  fontSize: `${f.font_size}pt`,
                   direction: f.direction,
                   textAlign: f.text_align,
                   fontFamily: `${f.font_family}, Tahoma, sans-serif`,

@@ -32,8 +32,25 @@ module.exports = function registerPrint(ipcMain, ctx) {
         .get(checkId);
       if (!check) return { ok: false, error: 'الشيك غير موجود' };
 
+      try {
+        const template = database.prepare('SELECT * FROM templates WHERE is_default = 1 LIMIT 1').get() ||
+                         database.prepare('SELECT * FROM templates ORDER BY id LIMIT 1').get();
+        if (template) {
+          template.fields = database.prepare('SELECT * FROM template_fields WHERE template_id = ?').all(template.id);
+          check.template = template;
+        }
+      } catch (e) {
+        // Fallback if templates table does not exist
+      }
+
       const deviceName = getSetting('cheque_printer_name') || '';
-      return await printService.printCheck(check, { deviceName: deviceName || null });
+      const offsetX = parseFloat(getSetting('print_offset_x')) || 0;
+      const offsetY = parseFloat(getSetting('print_offset_y')) || 0;
+      return await printService.printCheck(check, { 
+        deviceName: deviceName || null,
+        offsetX,
+        offsetY
+      });
     } catch (err) {
       return { ok: false, error: err.message };
     }

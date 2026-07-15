@@ -302,6 +302,8 @@ function PrintSettingsTab() {
   const [s, , reloadSettings] = useSettings();
   const [chequePrinter, setChequePrinter] = useState('');
   const [reportPrinter, setReportPrinter] = useState('');
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
 
   const load = useCallback(async () => {
     const banks = await window.api.banks.list();
@@ -316,6 +318,8 @@ function PrintSettingsTab() {
     if (s) {
       setChequePrinter(s.cheque_printer_name || '');
       setReportPrinter(s.report_printer_name || '');
+      setOffsetX(Number(s.print_offset_x) || 0);
+      setOffsetY(Number(s.print_offset_y) || 0);
     }
   }, [s]);
 
@@ -343,6 +347,8 @@ function PrintSettingsTab() {
     const res = await window.api.settings.setMany({
       cheque_printer_name: chequePrinter,
       report_printer_name: reportPrinter,
+      print_offset_x: offsetX.toString(),
+      print_offset_y: offsetY.toString(),
     });
     if (res.ok) {
       toast('تم حفظ إعدادات الطابعة', 'success');
@@ -403,7 +409,23 @@ function PrintSettingsTab() {
           </span>
         </div>
 
-        <button className="btn-primary" onClick={savePrinters}>💾 حفظ إعدادات الطابعة</button>
+        {/* Global Printer Offsets */}
+        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
+          <h3 className="font-medium text-amber-900 mb-2">📐 إزاحة الطباعة الدقيقة (لحل مشكلة الهوامش الإجبارية للطابعة)</h3>
+          <p className="text-xs text-amber-800 mb-3">إذا كانت الطباعة تظهر مزاحة رغم صحة التصميم في القالب، أدخل الإزاحة هنا بالمليمتر (يمكن استخدام قيم سالبة وموجبة).</p>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="label">الإزاحة الأفقية (X) مم</label>
+              <input type="number" step="0.5" className="input" value={offsetX} onChange={(e) => setOffsetX(e.target.value)} />
+            </div>
+            <div>
+              <label className="label">الإزاحة العمودية (Y) مم</label>
+              <input type="number" step="0.5" className="input" value={offsetY} onChange={(e) => setOffsetY(e.target.value)} />
+            </div>
+          </div>
+        </div>
+
+        <button className="btn-primary" onClick={savePrinters}>💾 حفظ إعدادات الطابعة والإزاحة</button>
       </div>
 
       {/* ---- Bank dimensions ---- */}

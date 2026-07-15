@@ -30,6 +30,7 @@ export default function TemplateDesigner() {
   const [fields, setFields] = useState(null);
   const [selected, setSelected] = useState('payee');
   const [dragging, setDragging] = useState(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const canvasRef = useRef(null);
 
   const load = useCallback(async () => {
@@ -43,10 +44,12 @@ export default function TemplateDesigner() {
   const onMouseMove = useCallback((e) => {
     if (!dragging || !canvasRef.current || !meta) return;
     const rect = canvasRef.current.getBoundingClientRect();
-    const x_mm = round1(Math.max(0, Math.min(meta.width_mm, (rect.right - e.clientX) / MM_TO_PX)));
-    const y_mm = round1(Math.max(0, Math.min(meta.height_mm, (e.clientY - rect.top) / MM_TO_PX)));
+    const rightPx = rect.right - e.clientX - dragOffset.x;
+    const topPx = e.clientY - rect.top - dragOffset.y;
+    const x_mm = round1(Math.max(0, Math.min(meta.width_mm, rightPx / MM_TO_PX)));
+    const y_mm = round1(Math.max(0, Math.min(meta.height_mm, topPx / MM_TO_PX)));
     setFields((fs) => fs.map((f) => (f.field_name === dragging ? { ...f, x_mm, y_mm } : f)));
-  }, [dragging, meta]);
+  }, [dragging, meta, dragOffset]);
   const onMouseUp = useCallback(() => setDragging(null), []);
 
   useEffect(() => {
@@ -110,7 +113,13 @@ export default function TemplateDesigner() {
             {fields.filter((f) => f.visible).map((f) => (
               <div
                 key={f.field_name}
-                onMouseDown={(e) => { e.preventDefault(); setSelected(f.field_name); setDragging(f.field_name); }}
+                onMouseDown={(e) => { 
+                  e.preventDefault(); 
+                  setSelected(f.field_name); 
+                  setDragging(f.field_name); 
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setDragOffset({ x: rect.right - e.clientX, y: e.clientY - rect.top });
+                }}
                 style={{ ...fieldStyle(f, 'px'), cursor: 'move', outline: selected === f.field_name ? '2px solid #0ea5e9' : 'none', background: 'rgba(255,255,255,.6)' }}
               >
                 {(FIELD_META[f.field_name] || {}).sample || f.field_name}
